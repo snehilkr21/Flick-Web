@@ -1,16 +1,20 @@
-function Navbar(){
-    return(
-        <div className="navbar bg-base-200 px-4">
-        {/* Left Section: Logo */}
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Dev Flick</a>
-        </div>
-  
-        {/* Right Section: Search and Avatar - All in one flex row */}
+import { useSelector } from "react-redux";
+
+function Navbar() {
+  const userData = useSelector((store) => store.user.data);
+  return (
+    <div className="navbar bg-base-200 px-4">
+      {/* Left Section: Logo */}
+      <div className="flex-1">
+        <a className="btn btn-ghost text-xl">Dev Flick</a>
+      </div>
+
+      {/* Right Section: Search and Avatar - All in one flex row */}
+      {userData && Object.keys(userData).length > 0 && (
         <div className="flex-none flex items-center gap-4">
           {/* Search */}
-          
-  
+          <div>{userData.firstName && `Hello ${userData.firstName}`}</div>
+
           {/* Profile Photo Dropdown */}
           <div className="dropdown dropdown-end  mx-2">
             <div
@@ -19,10 +23,9 @@ function Navbar(){
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="User Avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+                {userData.photoUrl && (
+                  <img alt="User Avatar" src={userData?.photoUrl} />
+                )}
               </div>
             </div>
             <ul
@@ -35,13 +38,18 @@ function Navbar(){
                   <span className="badge">New</span>
                 </a>
               </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
             </ul>
           </div>
         </div>
-      </div>
-    )
+      )}
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;
