@@ -26,7 +26,7 @@ function Body() {
   }
   useEffect(() => {
     if (Object.keys(userData).length == 0) fetchUser();
-  }, []);
+  }, [navigate]);
   return (
     <>
       <Navbar />

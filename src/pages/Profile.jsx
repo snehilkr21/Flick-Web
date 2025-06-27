@@ -5,12 +5,11 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 import { addUser } from "../utils/userSlice";
 import Toast from "../component/toast";
+import { useEffect } from "react";
 
 function Profile() {
   const userData = useSelector((store) => store.user.data);
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [firstName, setFirstName] = useState(userData?.firstName || "");
   const [lastName, setLastName] = useState(userData?.lastName || "");
   const [photoUrl, setPhotoUrl] = useState(userData?.photoUrl || "");
@@ -42,6 +41,14 @@ function Profile() {
       setError(err?.response?.data?.message || "something went wrong");
     }
   }
+  useEffect(() => {
+    setFirstName(userData?.firstName);
+    setLastName(userData?.lastName);
+    setPhotoUrl(userData?.photoUrl);
+    setAge(userData?.age);
+    setGender(userData?.gender);
+    setAbout(userData?.about);
+  }, [userData]);
   return (
     <div className="flex justify-center items-center min-h-screen bg-base-200">
       <div className="card bg-base-100 w-96 shadow-sm">
