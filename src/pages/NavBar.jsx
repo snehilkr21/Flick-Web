@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constant";
+import { BASE_URL, default_image_url } from "../utils/constant";
 import { removeUser } from "../utils/userSlice";
 import { Link } from "react-router-dom";
 function Navbar() {
@@ -14,7 +14,9 @@ function Navbar() {
       await axios.post(`${BASE_URL}/logout`, {}, { withCredentials: true });
       dispatch(removeUser());
       navigate("/login");
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
   return (
     <div className="navbar bg-base-200 px-4">
@@ -40,7 +42,10 @@ function Navbar() {
             >
               <div className="w-10 rounded-full">
                 {userData.photoUrl && (
-                  <img alt="User Avatar" src={userData?.photoUrl} />
+                  <img
+                    alt="User Avatar"
+                    src={userData?.photoUrl || default_image_url}
+                  />
                 )}
               </div>
             </div>
@@ -56,6 +61,9 @@ function Navbar() {
               </li>
               <li>
                 <Link to="/connections">Connections</Link>
+              </li>
+              <li>
+                <Link to="/request">Request</Link>
               </li>
               <li>
                 <a

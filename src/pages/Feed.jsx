@@ -19,7 +19,7 @@ function Feed() {
     }
   }
   useEffect(() => {
-    getFeed();
+    if (!feed) getFeed();
   }, []);
   if (Array.isArray(feed) && feed.length === 0) return null;
   return (

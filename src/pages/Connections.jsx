@@ -14,7 +14,7 @@ function Connections() {
     dispatch(addConnection(connectionUser?.data?.data));
   }
   useEffect(() => {
-    findConnections();
+    if (!connectionData) findConnections();
   }, []);
   if (!connectionData) return;
   if (connectionData?.length == 0) return <h1>No Connection Found</h1>;

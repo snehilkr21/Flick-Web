@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { default_image_url } from "../utils/constant";
 
 function ConnectionCard({ user }) {
-  const { _id, firstName, lastName, photoURL, gender, age, about } = user;
+  const { _id, firstName, lastName, photoUrl, gender, age, about } = user;
   return (
     <div className="flex bg-base-300 rounded-xl shadow-xl mx-auto w-1/2 md:1/2 my-5 items-center">
       <figure>
         <img
-          src={photoURL || default_image_url}
+          src={photoUrl || default_image_url}
           className="w-36 md:w-24 md:h-24 h-36 rounded-lg  ml-3 "
           alt="user-img"
         />
