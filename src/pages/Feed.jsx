@@ -21,13 +21,11 @@ function Feed() {
   useEffect(() => {
     if (!feed) getFeed();
   }, []);
-  if (Array.isArray(feed) && feed.length === 0) return null;
+  if (feed?.length <= 0)
+    return <h1 className="flex justify-center my-10">No new users founds!</h1>;
   return (
     <div className="flex justify-center my-10">
-      {feed?.length &&
-        feed.map((specificUser) => {
-          return <UserCard user={specificUser} key={specificUser._id} />;
-        })}
+      {feed?.length > 0 && <UserCard user={feed[0]} />};
     </div>
   );
 }

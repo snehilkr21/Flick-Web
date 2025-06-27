@@ -17,7 +17,12 @@ function Connections() {
     if (!connectionData) findConnections();
   }, []);
   if (!connectionData) return;
-  if (connectionData?.length == 0) return <h1>No Connection Found</h1>;
+  if (connectionData?.length == 0)
+    return (
+      <h1 className="text-3xl my-10 flex justify-center font-bold">
+        No requests found!
+      </h1>
+    );
   return (
     <div className="my-10">
       <h1 className="text-3xl  text-center font-extrabold">Connections</h1>
