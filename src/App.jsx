@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Body />}>
             <Route index element={<Feed />} />
             <Route path="login" element={<Login />} />
+            <Route path="signUp" element={<Login />} />
             <Route path="profile" element={<Profile />} />
             <Route path="connections" element={<Connections />} />
             <Route path="request" element={<Request />} />

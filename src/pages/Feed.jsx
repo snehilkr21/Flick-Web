@@ -25,7 +25,7 @@ function Feed() {
     return <h1 className="flex justify-center my-10">No new users founds!</h1>;
   return (
     <div className="flex justify-center my-10">
-      {feed?.length > 0 && <UserCard user={feed[0]} />};
+      {feed?.length > 0 && <UserCard user={feed[0]} />}
     </div>
   );
 }
