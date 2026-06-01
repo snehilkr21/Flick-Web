@@ -30,7 +30,10 @@ function Body() {
       !(userData && Object.keys(userData).length > 0) &&
       location.pathname !== "/login"
     ) {
-      fetchUser();
+      if(location.pathname == "/signUp")
+        navigate("/signUp")
+      else
+        fetchUser();
     }
   }, [navigate]);
   return (
