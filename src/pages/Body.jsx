@@ -6,7 +6,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constant";
 import { addUser } from "../utils/userSlice";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Navbar from "./NavBar";
 
 function Body() {
   const location = useLocation();
