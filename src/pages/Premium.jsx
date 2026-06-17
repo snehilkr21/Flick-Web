@@ -2,7 +2,7 @@ import axios from "axios"
 import { BASE_URL } from "../utils/constant"
 import { useEffect, useState } from "react";
 function Premium() {
-   const [isUserPremium, setIsUserPremium] = useState(false);
+   const [isPremiumUser, setIsPremiumUser] = useState(false);
     useEffect(() => {
         verifyPremiumUser();
     }, []);
@@ -13,7 +13,7 @@ function Premium() {
         });
 
         if (res.data.isPremium) {
-        setIsUserPremium(true);
+        setIsPremiumUser(true);
         }
     };
     useEffect(()=>{verifyPremiumUser()},[])
