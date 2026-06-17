@@ -5,6 +5,7 @@ function Premium() {
     const [isPremiumUser, setIsPremiumUser] = useState(false);
     const verifyPremiumUser = async (response) => {
         const res = await axios.post(`${BASE_URL}/premium/verify`, { response }, { withCredentials: true });
+        console.log("User",res)
         if (res.data.isPremiumUser) {
             setIsPremiumUser(true);
         }
