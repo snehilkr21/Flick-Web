@@ -2,14 +2,20 @@ import axios from "axios"
 import { BASE_URL } from "../utils/constant"
 import { useEffect, useState } from "react";
 function Premium() {
-    const [isPremiumUser, setIsPremiumUser] = useState(false);
-    const verifyPremiumUser = async (response) => {
-        const res = await axios.post(`${BASE_URL}/premium/verify`, { response }, { withCredentials: true });
-        console.log("User",res)
-        if (res.data.isPremiumUser) {
-            setIsPremiumUser(true);
+   const [isUserPremium, setIsUserPremium] = useState(false);
+    useEffect(() => {
+        verifyPremiumUser();
+    }, []);
+
+    const verifyPremiumUser = async () => {
+        const res = await axios.get(BASE_URL + "/premium/verify", {
+        withCredentials: true,
+        });
+
+        if (res.data.isPremium) {
+        setIsUserPremium(true);
         }
-    }
+    };
     useEffect(()=>{verifyPremiumUser()},[])
 
     const handleBuyClick = async (membershipType) => {
