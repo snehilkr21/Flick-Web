@@ -1,6 +1,13 @@
 import axios from "axios"
 import { BASE_URL } from "../utils/constant"
 function Premium() {
+    const [isPremiumUser, setIsPremiumUser] = React.useState(false);
+    const verifyPremiumUser = async (response) => {
+        const res = await axios.post(`${BASE_URL}/premium/verify`, { response }, { withCredentials: true });
+        if (res.data.isPremiumUser) {
+            setIsPremiumUser(true);
+        }
+    }
     const handleBuyClick = async (membershipType) => {
         const order = await axios.post(`${BASE_URL}/payment/create`, { membershipType }, { withCredentials: true });
         console.log("order ", order)
@@ -22,11 +29,20 @@ function Premium() {
             theme: {
                 color: '#F37254'
             },
+            handler : verifyPremiumUser
+
+            
         };
         const rzp = new Razorpay(options);
         rzp.open();
     }
     return (
+        isPremiumUser ? (
+            <div className="text-center text-2xl font-bold m-10">
+                You are a Premium User
+            </div>
+        )
+        :
         <div className="m-10">
             <div className="flex w-full">
                 <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
@@ -53,6 +69,7 @@ function Premium() {
                 </div>
             </div>
         </div>
+        
     )
 }
 
