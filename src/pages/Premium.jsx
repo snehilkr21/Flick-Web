@@ -1,8 +1,8 @@
 import axios from "axios"
 import { BASE_URL } from "../utils/constant"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 function Premium() {
-    const [isPremiumUser, setIsPremiumUser] = React.useState(false);
+    const [isPremiumUser, setIsPremiumUser] = useState(false);
     const verifyPremiumUser = async (response) => {
         const res = await axios.post(`${BASE_URL}/premium/verify`, { response }, { withCredentials: true });
         if (res.data.isPremiumUser) {
