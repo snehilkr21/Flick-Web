@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import Feed from "./pages/Feed";
 import Connections from "./pages/Connections";
 import Request from "./pages/Request";
+import Premium from "./pages/Premium";
 function App() {
   return (
     <Provider store={appStore}>
@@ -20,6 +21,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="connections" element={<Connections />} />
             <Route path="request" element={<Request />} />
+            <Route path="premium" element={<Premium />} />
           </Route>
         </Routes>
       </BrowserRouter>
