@@ -10,7 +10,7 @@ function Premium() {
             setIsPremiumUser(true);
         }
     }
-    useEffect(()=>{verifyPremiumUser},[])
+    useEffect(()=>{verifyPremiumUser()},[])
 
     const handleBuyClick = async (membershipType) => {
         const order = await axios.post(`${BASE_URL}/payment/create`, { membershipType }, { withCredentials: true });
