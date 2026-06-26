@@ -3,9 +3,6 @@ import { BASE_URL } from "../utils/constant"
 import { useEffect, useState } from "react";
 function Premium() {
    const [isPremiumUser, setIsPremiumUser] = useState(false);
-    useEffect(() => {
-        verifyPremiumUser();
-    }, []);
 
     const verifyPremiumUser = async () => {
         const res = await axios.get(BASE_URL + "/premium/verify", {
@@ -20,7 +17,6 @@ function Premium() {
 
     const handleBuyClick = async (membershipType) => {
         const order = await axios.post(`${BASE_URL}/payment/create`, { membershipType }, { withCredentials: true });
-        console.log("order ", order)
         
         const {amount, keyId, currency, notes, orderId} = order.data;
         // Open Razorpay Checkout

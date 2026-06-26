@@ -21,8 +21,8 @@ function ConnectionCard({ user }) {
         )}
         <p className="text-sm hidden md:block md:text-l">{about}</p>
       </div>
-      <Link to={`/message/${_id}`}>
-        <button className="btn btn-secondary mr-2">Message</button>
+      <Link to={`/chat/${_id}`}>
+        <button className="btn btn-secondary mr-2">Chat</button>
       </Link>
     </div>
   );
